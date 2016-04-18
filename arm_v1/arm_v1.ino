@@ -5,15 +5,15 @@ Servo SHOULDER;
 Servo ARM;
 Servo GRIPPER;
 
-#define base  3
+#define base  11
 #define shoulder  5
 #define arm 6
-#define gripper 11
+#define gripper 3
 
 #define s_base  A0
 #define s_shoulder  A1
 #define s_arm  A2
-#define s_gripper 8
+#define s_gripper 9
 
 int state = 0;
 
@@ -42,13 +42,14 @@ void loop() {
 //  Serial.print(val_shoulder);
 //  Serial.print("  ");
 //  Serial.println(val_arm);
+//  delay(100);
     if(digitalRead(s_gripper) == 0) {
       delay(200);
       state++;
     }
     if(state >=2) state = 0;
-    if(state == 0)  GRIPPER.write(55);// อ้า
-    if(state == 1)  GRIPPER.write(108); //  หุบ
+    if(state == 0)  GRIPPER.write(80);// อ้า
+    if(state == 1)  GRIPPER.write(140); //  หุบ
     
   val_base = map(analogRead(s_base), 0, 1023, 0, 180);
   val_shoulder = map(analogRead(s_shoulder), 0, 1023, 0, 180); 
